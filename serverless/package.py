@@ -9,7 +9,9 @@ def package():
     template_dict = get_template_data(template_file)
     for resource_logical_id in template_dict.get("Resources", {}).keys():
         path = os.path.join(os.getcwd(), DEFAULT_BUILD_DIR, resource_logical_id)
-        shutil.make_archive('artifacts/' + resource_logical_id, format="zip", root_dir=path)
+        shutil.make_archive(
+            "artifacts/" + resource_logical_id, format="zip", root_dir=path
+        )
 
 
 def get_template_data(template_file):
@@ -20,4 +22,3 @@ def get_template_data(template_file):
 
 if __name__ == "__main__":
     package()
-
