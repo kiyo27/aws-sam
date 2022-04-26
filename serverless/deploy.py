@@ -28,8 +28,12 @@ def create(**kwargs):
 
 
 def update(**kwargs):
-    valid_args = ["FunctionName", "Qualifier"]
-    return client.update_function_code(_build_deploy_args(kwargs, valid_args))
+    valid_args = ["FunctionName", "ZipFile"]
+    arg_list = {
+        "FunctionName": kwargs["FunctionName"],
+        "ZipFile": kwargs["Code"]["ZipFile"]
+    }
+    return client.update_function_code(**_build_deploy_args(arg_list, valid_args))
 
 
 def _build_deploy_args(arg_list, valid_args):

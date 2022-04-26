@@ -25,6 +25,7 @@ def lambda_handler(event, context):
     """
     try:
         ip = requests.get("http://checkip.amazonaws.com/")
+        print(ip.text.replace("\n", ""))
     except requests.RequestException as e:
         # Send some context about this error to Lambda Logs
         print(e)
